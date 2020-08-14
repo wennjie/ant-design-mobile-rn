@@ -10,7 +10,7 @@ import { formatProps } from './utils';
 
 export interface DatePickerProps
   extends DatePickerPropsType,
-    WithThemeStyles<PickerStyle> {
+  WithThemeStyles<PickerStyle> {
   triggerTypes?: string;
 }
 
@@ -23,6 +23,14 @@ export default class DatePicker extends React.Component<DatePickerProps> {
   static contextTypes = {
     antLocale: PropTypes.object,
   };
+  public show() {
+    this.ref.show()
+
+  }
+  public hide() {
+    this.ref.hide()
+  }
+  ref: any = null
   render() {
     const { children, value, defaultDate, itemStyle, ...restProps } = this.props;
     const locale = getComponentLocale(
@@ -58,6 +66,7 @@ export default class DatePicker extends React.Component<DatePickerProps> {
             date={value}
             dismissText={this.props.dismissText || dismissText}
             okText={this.props.okText || okText}
+            ref={(ref) => { this.ref = ref }}
           >
             {children &&
               React.isValidElement(children) &&

@@ -25,12 +25,20 @@ class PopupDatePicker extends React.Component<PopupDatePickerProps, any> {
     }
   }
 
+  show() {
+    this.ref.show()  
+  }
+  hide() {
+    this.ref.hide()
+  }
+  ref: any = null
   render() {
     return (<PopupPicker
       picker={this.props.datePicker}
       value={this.props.date}
       {...this.props}
       onOk={this.onOk}
+      ref={e => { this.ref = e }}
     />);
   }
 }

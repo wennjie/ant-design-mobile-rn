@@ -6,7 +6,9 @@ interface Args {
   getContent: any,
   hide: any,
   onDismiss: any,
-  onOk: any
+  onOk: any,
+  show?:any
+  
 }
 
 export default function PopupMixin(
@@ -101,6 +103,7 @@ export default function PopupMixin(
           onOk: this.onOk,
           hide: this.hide,
           onDismiss: this.onDismiss,
+          show:this.show
         });
       }
       const { WrapComponent, disabled } = this.props;
@@ -159,6 +162,9 @@ export default function PopupMixin(
 
     hide = () => {
       this.fireVisibleChange(false);
+    };
+    show = () => {
+      this.fireVisibleChange(true);
     };
 
     render() {
