@@ -1,14 +1,13 @@
 import React from 'react';
 import {
   Animated,
-  Dimensions,
+  BackHandler, Dimensions,
   Easing,
   StyleProp,
   StyleSheet,
   TouchableWithoutFeedback,
   View,
-  ViewStyle,
-  BackHandler,
+  ViewStyle
 } from 'react-native';
 import Portal from '../portal';
 import { CallbackOnBackHandler } from "./PropsType";
@@ -59,8 +58,8 @@ export default class RCModal extends React.Component<IModalPropTypes, any> {
     animationDuration: 300,
     visible: false,
     maskClosable: true,
-    onClose() {},
-    onAnimationEnd(_visible: boolean) {},
+    onClose() { },
+    onAnimationEnd(_visible: boolean) { },
   } as IModalPropTypes;
 
   animMask: any;
@@ -153,7 +152,7 @@ export default class RCModal extends React.Component<IModalPropTypes, any> {
         this.animDialog = Animated.timing(this.state.position, {
           toValue: this.getPosition(visible),
           duration: animationDuration,
-          easing: (visible ? Easing.elastic(0.8) : undefined) as any,
+          easing: (visible ? Easing.elastic(0) : undefined) as any,
           useNativeDriver: true,
         });
       } else if (animationType === 'fade') {
